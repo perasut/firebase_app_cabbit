@@ -1,5 +1,6 @@
 import 'package:firebase_app_cabbit/screen/home_screen.dart';
 import 'package:firebase_app_cabbit/screen/login_screen.dart';
+import 'package:firebase_app_cabbit/screen/phone_login_screen.dart';
 import 'package:firebase_app_cabbit/screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -7,33 +8,31 @@ import 'package:page_transition/page_transition.dart';
 const routeLogin = '/login';
 const routeRegister = '/register';
 const routeHome = '/home';
+const routePhoneLogin = '/phoneLogin';
 
 class Routes {
-  static Route<dynamic> generateRoute(RouteSettings settings){
+  static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case routeLogin:
         return PageTransition(
-          child: LoginScreen(), 
-          type: PageTransitionType.leftToRight
-        );
+            child: LoginScreen(), type: PageTransitionType.leftToRight);
         break;
       case routeRegister:
         return PageTransition(
-          child: RegisterScreen(), 
-          type: PageTransitionType.rightToLeft
-        );
+            child: RegisterScreen(), type: PageTransitionType.rightToLeft);
         break;
+
       case routeHome:
         return PageTransition(
-          child: HomeScreen(), 
-          type: PageTransitionType.rightToLeft
-        );
+            child: HomeScreen(), type: PageTransitionType.rightToLeft);
+        break;
+      case routePhoneLogin:
+        return PageTransition(
+            child: PhoneLoginScreen(), type: PageTransitionType.rightToLeft);
         break;
       default:
         return PageTransition(
-          child: LoginScreen(), 
-          type: PageTransitionType.rightToLeft
-        );
+            child: LoginScreen(), type: PageTransitionType.rightToLeft);
         break;
     }
   }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "823044182408",
+    "firebase_url": "https://fir-app-cabbit.firebaseio.com",
+    "project_id": "fir-app-cabbit",
+    "storage_bucket": "fir-app-cabbit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823044182408:android:9a590e962b4693e65d6a3d",
+        "android_client_info": {
+          "package_name": "com.cabbitcool.firebase_app_cabbit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "823044182408-9pcfdpor6vpsoi0ac6vjh4m965ljaopd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cabbitcool.firebase_app_cabbit",
+            "certificate_hash": "87fcc89da96ac4a8027f20f7996ebfcd487195ee"
+          }
+        },
+        {
+          "client_id": "823044182408-6c67p2lsu2r1e417biifun8datnaio2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLHeOpnAHmZ6a3OAQB_ohaaluG9pLdJSs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "823044182408-6c67p2lsu2r1e417biifun8datnaio2m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

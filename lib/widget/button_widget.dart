@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_app_cabbit/res/style.dart';
 
 class ButtonWidget extends StatelessWidget {
+
   final String buttonText;
   final Function onClick;
+
   const ButtonWidget({@required this.buttonText, @required this.onClick});
 
   @override
@@ -12,7 +14,7 @@ class ButtonWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 45.0,
       child: FlatButton(
-        onPressed: onClick,
+        onPressed: onClick, 
         child: Text(
           buttonText,
           style: styleButtonText,
@@ -20,7 +22,9 @@ class ButtonWidget extends StatelessWidget {
         ),
         color: Theme.of(context).primaryColorDark,
         splashColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+        ),
       ),
     );
   }

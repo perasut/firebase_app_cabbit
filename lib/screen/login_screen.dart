@@ -1,8 +1,6 @@
 import 'package:firebase_app_cabbit/res/style.dart';
-import 'package:firebase_app_cabbit/route/routes.dart';
-import 'package:firebase_app_cabbit/screen/phone_login_screen.dart';
-import 'package:firebase_app_cabbit/widget/button_widget.dart';
 import 'package:firebase_app_cabbit/service/firebase/firebase_auth_service.dart';
+import 'package:firebase_app_cabbit/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,7 +8,7 @@ class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   String _email;
   String _password;
-  
+
   Widget buildOtherLine() {
     return Container(
         margin: EdgeInsets.only(top: 10),
@@ -41,7 +39,7 @@ class LoginScreen extends StatelessWidget {
             margin: EdgeInsets.only(top: 12),
             padding: EdgeInsets.all(12)),
         onTap: () {
-          Navigator.pushNamed(context, routePhoneLogin);
+          Navigator.pushNamed(context, '/phoneLogin');
         });
   }
 
@@ -56,7 +54,9 @@ class LoginScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10), color: Colors.red),
             margin: EdgeInsets.only(top: 12),
             padding: EdgeInsets.all(12)),
-        onTap: () {});
+        onTap: () async {
+          FirebaseAuthService().signInWithGoogle(context);
+        });
   }
 
   Widget buildButtonFacebook(BuildContext context) {
@@ -70,21 +70,20 @@ class LoginScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10), color: Colors.blue),
             margin: EdgeInsets.only(top: 12),
             padding: EdgeInsets.all(12)),
-        onTap: () {});
+        onTap: () async {
+          FirebaseAuthService().signInWithFacebook(context);
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'เข้าสู่ระบบ',
-          style: GoogleFonts.kanit(),
-        ),
+        title: Text('เข้าสู่ระบบ', style: GoogleFonts.kanit()),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
+          padding: const EdgeInsets.only(top: 20.0, left: 16.0, right: 16.0),
           child: Container(
             child: Form(
                 key: _formKey,
@@ -96,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                       height: 80.0,
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
                     TextFormField(
                       decoration:
@@ -130,10 +129,8 @@ class LoginScreen extends StatelessWidget {
                         onClick: () {
                           print(_email);
                           if (_formKey.currentState.validate()) {
-                            FirebaseAuthService.firebaseSignIn(
-                                _email, _password);
-                            // Navigator.
-                            Navigator.pushReplacementNamed(context, routeHome);
+                            FirebaseAuthService()
+                                .firebaseSignIn(context, _email, _password);
                           }
                         }),
                     SizedBox(
@@ -152,11 +149,11 @@ class LoginScreen extends StatelessWidget {
                     InkWell(
                       child: RichText(
                         text: TextSpan(
-                          text: "หากยังไม่เป็นสมาชิก?",
+                          text: "หากยังไม่เป็นสมาชิก ?",
                           style: styleSmallText,
                           children: [
                             TextSpan(
-                              text: ' สมัครสมาชิกที่นี่',
+                              text: ' สมัครสมาชิกที่นี่.',
                               style: styleSmallText.copyWith(
                                 color: Theme.of(context).primaryColorDark,
                               ),
@@ -165,9 +162,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                       onTap: () {
-                        Navigator.pushReplacementNamed(context, routeRegister);
+                        Navigator.pushNamed(context, '/register');
                       },
-                    )
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
                   ],
                 )),
           ),
